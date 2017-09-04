@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     TabLayout tab;
     ViewPager viewPager;
-    public static List<String> titleList = null;
-    public static List<Fragment> fragmentList = null;
+    public static List<String> titleList = Arrays.asList("业界", "移动", "研发", "程序员", "云计算");
+    List<Fragment> fragmentList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +34,7 @@ public class MainActivity extends AppCompatActivity {
         //getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
-        titleList = new ArrayList<String>();
-        fragmentList = new ArrayList<Fragment>();
-
-        titleList = Arrays.asList("业界", "移动", "研发", "程序员", "云计算");
+        fragmentList = new ArrayList<>();
         Fragment yejieFrgment = YeJieFragment.newInstances();
         Fragment yiDong = YiDong.newInstances();
         Fragment yanFa = YanFa.newInstances();
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         tab = (TabLayout)findViewById(R.id.tabLayout);
         viewPager = (ViewPager)findViewById(R.id.viewPger);
-        viewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(),fragmentList));
 
         tab.setupWithViewPager(viewPager);
 

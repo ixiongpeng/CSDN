@@ -16,10 +16,12 @@ import app.ixiongpeng.com.csdn.MainActivity;
 
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
-
-    public MyFragmentPagerAdapter(FragmentManager fm) {
+    List<Fragment> fragmentList = null;
+    public MyFragmentPagerAdapter(FragmentManager fm, List<Fragment> fragmentList) {
         super(fm);
+        this.fragmentList = fragmentList;
     }
+
 
 
     @Override
@@ -29,7 +31,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return MainActivity.fragmentList.get(position);
+        return this.fragmentList.get(position);
     }
 
     @Override
