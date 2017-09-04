@@ -8,6 +8,7 @@
         android:layout_height="wrap_content"
         android:text="YEJIE"
         android:textSize="20sp"
+        android:textColor="@color/textcolor"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 

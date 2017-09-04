@@ -1,27 +1,32 @@
 package app.ixiongpeng.com.csdn;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TableLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import app.ixiongpeng.com.csdn.adapter.MyFragmentPagerAdapter;
+import app.ixiongpeng.com.csdn.ui.Coder;
+import app.ixiongpeng.com.csdn.ui.YanFa;
 import app.ixiongpeng.com.csdn.ui.YeJieFragment;
+import app.ixiongpeng.com.csdn.ui.YiDong;
+import app.ixiongpeng.com.csdn.ui.YunJiSuan;
+
 
 public class MainActivity extends AppCompatActivity {
 
     String TAG = "MainActivity";
 
-    TableLayout tableLayout;
+
+    TabLayout tab;
     ViewPager viewPager;
-    List<String> titleList = null;
-    List<Fragment> fragmentList = null;
+    public static List<String> titleList = null;
+    public static List<Fragment> fragmentList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +37,24 @@ public class MainActivity extends AppCompatActivity {
         titleList = new ArrayList<String>();
         fragmentList = new ArrayList<Fragment>();
 
-
-        Fragment yejieFrgment = YeJieFragment.instantiate(this, "yejie");
         titleList = Arrays.asList("业界", "移动", "研发", "程序员", "云计算");
+        Fragment yejieFrgment = YeJieFragment.newInstances();
+        Fragment yiDong = YiDong.newInstances();
+        Fragment yanFa = YanFa.newInstances();
+        Fragment coder = Coder.newInstances();
+        Fragment yunJiSuan = YunJiSuan.newInstances();
+
         fragmentList.add(yejieFrgment);
+        fragmentList.add(yiDong);
+        fragmentList.add(yanFa);
+        fragmentList.add(coder);
+        fragmentList.add(yunJiSuan);
 
-        tableLayout = (TableLayout)findViewById(R.id.tabLayout);
+        tab = (TabLayout)findViewById(R.id.tabLayout);
         viewPager = (ViewPager)findViewById(R.id.viewPger);
+        viewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager()));
 
-        viewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(),fragmentList, titleList));
-
+        tab.setupWithViewPager(viewPager);
 
     }
 }

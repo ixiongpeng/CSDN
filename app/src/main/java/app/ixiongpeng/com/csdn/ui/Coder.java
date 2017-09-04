@@ -13,10 +13,10 @@ import app.ixiongpeng.com.csdn.R;
  * Created by xiongpeng on 2017/9/1.
  */
 
-public class YeJieFragment extends Fragment {
+public class Coder extends Fragment {
 
-    public static YeJieFragment newInstances(){
-        YeJieFragment fragment = new YeJieFragment();
+    public static Coder newInstances(){
+        Coder fragment = new Coder();
         return fragment;
 
 
